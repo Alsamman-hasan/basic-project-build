@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 1vw;
+  width: 100%;
+  line-height: 1.5vw;
+  text-rendering: optimizelegibility;
+}
+
+*::-webkit-scrollbar {
+  width: 7px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #B3B3B3;
+  border-radius: 20px;
+}
+
+@media (max-width: 1599px) {
+  html {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+input,
+button,
+textarea,
+select {
+  margin: 0;
+  font: inherit;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  body {
+    overflow: overlay;
+  }
+}
