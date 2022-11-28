@@ -44,13 +44,8 @@ export const Flex = memo((props: FlexProps) => {
     gap = 0,
     max,
   } = props;
-  const classess = [
-    className,
-    justifyClass[justify],
-    alignClass[align],
-    directionClass[direction],
-  ];
 
+  const classess = [className, justifyClass[justify], alignClass[align], directionClass[direction]];
   const mods: Mods = {
     [cls.max]: max,
   };
