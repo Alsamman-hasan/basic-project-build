@@ -14,7 +14,8 @@
     "paths":{
       "*" : ["./src/*"],
     },
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
   "ts-node": {
     "compilerOptions": {

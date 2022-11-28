@@ -14,6 +14,7 @@ export const Counter = () => {
   const counterValue = useSelector(getCounterValue);
   const increment = () => {
     dispatch(counterActions.incremented(1));
+    console.log('>>>>');
   };
   const decrement = () => {
     dispatch(counterActions.decremented());
