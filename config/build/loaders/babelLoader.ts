@@ -17,6 +17,9 @@ export function buildBabelLoader({ isDev, isTsx }: buildBabelLoaderProps) {
           '@babel/plugin-transform-runtime',
           isDev && require.resolve('react-refresh/babel'),
         ].filter(Boolean),
+        cacheDirectory: true,
+        cacheCompression: false,
+        compact: !isDev,
       },
     },
   };

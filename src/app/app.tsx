@@ -1,5 +1,5 @@
 import { memo, Suspense } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import AppRouter from './providers/router/ui/AppRouter.tsx';
 
 export const App = memo(() => {

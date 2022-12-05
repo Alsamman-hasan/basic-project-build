@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { CSSProperties, memo, ReactNode } from 'react';
 import cls from './Wrapper.module.scss';
 

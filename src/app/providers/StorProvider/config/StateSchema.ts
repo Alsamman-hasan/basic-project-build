@@ -6,7 +6,7 @@ import {
   ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { CounterSchema } from 'entities/Counter';
+import { CounterSchema } from '@/entities/Counter';
 
 export interface StateSchema {
   counter?: CounterSchema;
