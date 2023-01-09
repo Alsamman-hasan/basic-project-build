@@ -35,6 +35,9 @@ module.exports = {
         parser: 'typescript',
         usePrettierrc: false,
         endOfLine: 'auto',
+        semi: true,
+        useTabs: false,
+        tabWidth: 2,
       },
     ],
     'arrow-body-style': 'off',
@@ -47,7 +50,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'warn',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-props-no-spreading': 'warn',
     'react/function-component-definition': 'off',
     'no-shadow': 'off',
     'import/extensions': 'off',
@@ -62,7 +64,26 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'no-param-reassign': 'off',
     '@typescript-eslint/ban-ts-comment': 'warn',
+    'react/self-closing-comp': 'off',
     'no-undef': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-no-useless-fragment': 'warn',
+    'jsx-a11y/label-has-associated-control': [
+      'error',
+      {
+        required: {
+          some: ['nesting', 'id'],
+        },
+      },
+    ],
+    'jsx-a11y/label-has-for': [
+      'error',
+      {
+        required: {
+          some: ['nesting', 'id'],
+        },
+      },
+    ],
     quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
     'max-len': [
       'error',

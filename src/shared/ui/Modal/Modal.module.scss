@@ -1,0 +1,73 @@
+.Modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.overlay {
+  widows: 100%;
+  height: 100%;
+  background: rgb(31 29 29 / 40%);;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contetn {
+  min-width: 20rem;
+  transition: 0.3s transform;
+  transform: scale(0);
+  max-width: 80%;
+  position: relative;
+}
+
+.icon {
+  cursor: pointer;
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  color: var(--white-100);
+}
+
+.opened {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+  .contetn {
+    transform: scale(1);
+    animation: openModal 0.3s
+  }
+}
+
+.isClosing {
+  .contetn {
+    transform: scale(0.2);
+  }
+}
+
+
+@keyframes openModal {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contetn {
+    padding: 2rem 1rem ;
+  }
+  .icon {
+    top: 2px;
+    right: 6px;
+    z-index: 120;
+  }
+}

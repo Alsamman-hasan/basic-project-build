@@ -22,7 +22,10 @@ export const Counter = () => {
   return (
     <DynamicModuleLoader reducers={Reducers}>
       <h1 data-testid="value-title">value = {counterValue}</h1>
-      <button style={{ marginRight: '20px', marginTop: '20px' }} onClick={increment}>
+      <button
+        style={{ marginRight: '20px', marginTop: '20px' }}
+        onClick={increment}
+      >
         Increment
       </button>
       <button onClick={decrement}>Decrement</button>

@@ -1,4 +1,9 @@
-import { CombinedState, configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import {
+  CombinedState,
+  configureStore,
+  Reducer,
+  ReducersMapObject,
+} from '@reduxjs/toolkit';
 import { $api } from '@/shared/api/api';
 
 import { createReducerManager } from './reduserManager';
@@ -6,7 +11,7 @@ import { StateSchema, ThunkExtraArg } from './StateSchema';
 
 export function createReduxStore(
   initialState?: StateSchema,
-  asyncReducers?: ReducersMapObject<StateSchema>,
+  asyncReducers?: ReducersMapObject<StateSchema>
 ) {
   const rootReducer: ReducersMapObject<StateSchema> = {
     ...asyncReducers,

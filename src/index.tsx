@@ -17,5 +17,5 @@ root.render(
         </ErrorBoundary>
       </StoreProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

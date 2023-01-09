@@ -59,7 +59,7 @@ export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
     plugins.push(
       new BundleAnalyzerPlugin({
         openAnalyzer: false,
-      }),
+      })
     );
   }
   if (isProd) {
@@ -67,12 +67,12 @@ export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
       new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash:8].css',
         chunkFilename: 'css/[name].[contenthash:8].css',
-      }),
+      })
     );
     plugins.push(
       new CopyPlugin({
         patterns: [{ from: paths.robots }, { from: paths.manifest }],
-      }),
+      })
     );
   }
   return plugins;
