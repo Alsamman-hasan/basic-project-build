@@ -1,0 +1,100 @@
+.Button {
+  cursor: pointer; 
+  border-radius: 8px;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.ghost {
+  border: none;
+  background:none;
+  color: var(--white-100);
+  fill: var(--white-100);
+  &:not(:disabled):hover{
+    background: var(--white-10);
+  }
+
+  &:disabled {
+    color: var(--white-20);
+    fill: var(--white-20) ;
+  }
+}
+
+.primary {
+  background: var(--red-100);
+  color: var(--white-100);
+  fill: var(--white-100) ;
+  border: none;
+  &:not(:disabled):hover{
+    background: var(--red-hover-100);
+  }
+  &:disabled {
+    background: var(--white-5);
+    color: var(--white-10);
+    fill: var(--white-10) ;
+  }
+}
+
+
+.outline {
+  border: 1px solid var(--red-100);
+  background: none;
+  color: var(--white-100);
+  fill: var(--white-100) ;
+
+  &:not(:disabled):hover{
+    border-color: var(--red-hover-100);
+  }
+
+  &:disabled {
+    color: var(--white-20);
+    fill: var(--white-20) ;
+  }
+}
+
+.secondary {
+  border: none;
+  background: var(--white-5);
+  color: var(--white-100);
+  fill: var(--white-100);
+
+  &:not(:disabled):hover{
+    background: var(--white-10);
+  }
+
+  &:disabled {
+    color: var(--white-5);
+    fill: var(--white-5) ;
+  }
+}
+
+.large {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600 !important;
+  font: var(--H3);
+}
+
+.medium {
+  min-width: 1.75rem;
+  min-height: 1.75rem;
+  padding: 0.25rem 0.5rem;
+  font-weight: 400 !important;
+  font: var(--12-20-semiBold);
+}
+
+.iconAfter , .iconBefor {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.iconOnly {
+  text-align: center;
+}
+
+.textOnly {
+  text-align: center;
+}
