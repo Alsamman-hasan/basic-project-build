@@ -1,10 +1,10 @@
-import { HTMLAttributes, memo, ReactNode } from 'react';
-import { classNames, Mods } from '../../../lib/classNames/classNames';
-import cls from './Flex.module.scss';
+import { HTMLAttributes, memo, ReactNode } from "react";
+import { classNames, Mods } from "../../../lib/classNames/classNames";
+import cls from "./Flex.module.scss";
 
-export type FlexJustify = 'start' | 'center' | 'end' | 'between';
-export type FlexAlign = 'start' | 'center' | 'end';
-export type FlexDirection = 'row' | 'column';
+export type FlexJustify = "start" | "center" | "end" | "between";
+export type FlexAlign = "start" | "center" | "end";
+export type FlexDirection = "row" | "column";
 
 const justifyClass: Record<FlexJustify, string> = {
   start: cls.justifyStart,
@@ -38,9 +38,9 @@ export const Flex = memo((props: FlexProps) => {
   const {
     className,
     children,
-    direction = 'row',
-    align = 'center',
-    justify = 'start',
+    direction = "row",
+    align = "center",
+    justify = "start",
     gap = 0,
     max,
     ...otherProps

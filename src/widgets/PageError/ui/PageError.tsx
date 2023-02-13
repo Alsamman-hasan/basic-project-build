@@ -1,8 +1,8 @@
 // import { useTranslation } from "react-i18next";
 // import { Button } from "shared/ui/Buttons";
 // import { ButtonBgColor, ButtonSize } from "shared/ui/Buttons/types";
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './PageError.module.scss';
+import { classNames } from "@/shared/lib/classNames/classNames";
+import cls from "./PageError.module.scss";
 
 export interface PageErrorProps {
   className?: string;

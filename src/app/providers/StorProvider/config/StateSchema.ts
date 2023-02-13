@@ -4,9 +4,9 @@ import {
   EnhancedStore,
   Reducer,
   ReducersMapObject,
-} from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
-import { CounterSchema } from '@/entities/Counter';
+} from "@reduxjs/toolkit";
+import { AxiosInstance } from "axios";
+import { CounterSchema } from "@/entities/Counter";
 
 export interface StateSchema {
   counter?: CounterSchema;

@@ -1,7 +1,7 @@
-import { MainPage } from '@/pages/MainPage';
-import { NotfoundPage } from '@/pages/NotFoundPage';
-import { AppRoutes, getRouteMain } from '@/shared/consts/router';
-import { AppRoutesProps } from '@/shared/types/router';
+import { MainPage } from "@/pages/MainPage";
+import { NotfoundPage } from "@/pages/NotFoundPage";
+import { AppRoutes, getRouteMain } from "@/shared/consts/router";
+import { AppRoutesProps } from "@/shared/types/router";
 
 export const routesConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
@@ -12,7 +12,7 @@ export const routesConfig: Record<AppRoutes, AppRoutesProps> = {
 
   // last
   [AppRoutes.NOTFOUND]: {
-    path: '*',
+    path: "*",
     element: <NotfoundPage />,
   },
 };

@@ -3,11 +3,11 @@ import {
   configureStore,
   Reducer,
   ReducersMapObject,
-} from '@reduxjs/toolkit';
-import { $api } from '@/shared/api/api';
+} from "@reduxjs/toolkit";
+import { $api } from "@/shared/api/api";
 
-import { createReducerManager } from './reduserManager';
-import { StateSchema, ThunkExtraArg } from './StateSchema';
+import { createReducerManager } from "./reduserManager";
+import { StateSchema, ThunkExtraArg } from "./StateSchema";
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -39,4 +39,4 @@ export function createReduxStore(
   return store;
 }
 
-export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
+export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];

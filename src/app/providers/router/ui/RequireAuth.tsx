@@ -1,5 +1,5 @@
-import { Navigate, useLocation } from 'react-router-dom';
-import { getRouteMain } from '@/shared/consts/router';
+import { Navigate, useLocation } from "react-router-dom";
+import { getRouteMain } from "@/shared/consts/router";
 
 export function RequireAuth({ children }: { children: JSX.Element }) {
   // const auth = useSelector(getUserAuthData);

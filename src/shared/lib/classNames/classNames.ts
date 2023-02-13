@@ -10,5 +10,5 @@ export function classNames(
     ...Object.entries(mods)
       .filter(([, value]) => Boolean(value))
       .map(([calssName]) => calssName),
-  ].join(' ');
+  ].join(" ");
 }

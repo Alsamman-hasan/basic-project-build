@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import {
   DynamicModuleLoader,
   ReducersList,
-} from '@/shared/lib/componnets/DynamicModuleLoader/DynamicModuleLoader';
-import { getCounterValue } from '../model/selecters/getCounter/getCounter';
-import { counterActions, counterReducer } from '../model/slice/counterSlice';
+} from "@/shared/lib/componnets/DynamicModuleLoader/DynamicModuleLoader";
+import { getCounterValue } from "../model/selecters/getCounter/getCounter";
+import { counterActions, counterReducer } from "../model/slice/counterSlice";
 
 const Reducers: ReducersList = {
   counter: counterReducer,
@@ -14,7 +14,7 @@ export const Counter = () => {
   const counterValue = useSelector(getCounterValue);
   const increment = () => {
     dispatch(counterActions.incremented(1));
-    console.log('>>>>');
+    console.log(">>>>");
   };
   const decrement = () => {
     dispatch(counterActions.decremented());
@@ -23,7 +23,7 @@ export const Counter = () => {
     <DynamicModuleLoader reducers={Reducers}>
       <h1 data-testid="value-title">value = {counterValue}</h1>
       <button
-        style={{ marginRight: '20px', marginTop: '20px' }}
+        style={{ marginRight: "20px", marginTop: "20px" }}
         onClick={increment}
       >
         Increment

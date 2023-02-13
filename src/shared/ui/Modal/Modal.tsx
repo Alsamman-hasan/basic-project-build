@@ -5,13 +5,13 @@ import React, {
   useEffect,
   useCallback,
   MutableRefObject,
-} from 'react';
-import { classNames, Mods } from '../../lib/classNames/classNames';
-import CrossIcon from '../../assets/icons/Close.svg';
-import cls from './Modal.module.scss';
-import { Portal } from '../Portal/Portal';
-import { PTag } from '../Paragraph/P';
-import { HStack } from '../Stack';
+} from "react";
+import { classNames, Mods } from "../../lib/classNames/classNames";
+import CrossIcon from "../../assets/icons/Close.svg";
+import cls from "./Modal.module.scss";
+import { Portal } from "../Portal/Portal";
+import { PTag } from "../Paragraph/P";
+import { HStack } from "../Stack";
 
 export interface ModalProps {
   className?: string;
@@ -52,7 +52,7 @@ export const CustomModal = (props: ModalProps) => {
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         closeHandler();
       }
     },
@@ -61,10 +61,10 @@ export const CustomModal = (props: ModalProps) => {
 
   useEffect(() => {
     if (isOpen) {
-      window.addEventListener('keydown', onKeyDown);
+      window.addEventListener("keydown", onKeyDown);
     }
     return () => {
-      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener("keydown", onKeyDown);
       clearTimeout(timeRef.current);
     };
   }, [isOpen, onKeyDown]);
@@ -80,7 +80,7 @@ export const CustomModal = (props: ModalProps) => {
 
   return (
     <Portal>
-      <div className={classNames(cls.Modal, mods, [className, 'app_modal'])}>
+      <div className={classNames(cls.Modal, mods, [className, "app_modal"])}>
         <div className={cls.overlay} onClick={closeHandler}>
           <div className={cls.contetn} onClick={onContentClick}>
             <HStack gap={0.125} className={cls.icon} onClick={closeHandler}>

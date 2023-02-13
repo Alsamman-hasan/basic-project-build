@@ -1,8 +1,8 @@
-import { CSSProperties, memo, ReactNode } from 'react';
-import { classNames } from '../../lib/classNames/classNames';
-import cls from './Htage.module.scss';
+import { CSSProperties, memo, ReactNode } from "react";
+import { classNames } from "../../lib/classNames/classNames";
+import cls from "./Htage.module.scss";
 
-export type hTypes = 'h1' | 'h2' | 'h3';
+export type hTypes = "h1" | "h2" | "h3";
 
 const HClass: Record<hTypes, string> = {
   h1: cls.h1,
@@ -18,13 +18,13 @@ export interface HtageProps {
 }
 
 export const Htag = memo((props: HtageProps): JSX.Element => {
-  const { children, tage = 'h1', className, style, ...othreProps } = props;
+  const { children, tage = "h1", className, style, ...othreProps } = props;
   const classess = [className, HClass[tage]];
   return (
     <span
       style={style}
       {...othreProps}
-      className={classNames('', {}, classess)}
+      className={classNames("", {}, classess)}
     >
       {children}
     </span>
