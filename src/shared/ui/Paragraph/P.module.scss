@@ -1,19 +1,40 @@
-.Reg14 {
-  // font: var(--14-regular);
+.P1 {
+  font: var(--P1);
   font-weight: 400;
 }
 
-.SemiBold14 {
-  // font: var(--14-regular);
-  font-weight: 600;
-}
-
-.Reg12 {
-  // font: var(--12-20-semiBold);
+.P2 {
+  font: var(--P2);
   font-weight: 400;
 }
 
-.SemiBold12 {
-  // font: var(--12-18-semiBold);
-  font-weight: 600;
+.P3 {
+  font: var(--P3);
+  font-weight: 400;
+}
+
+.desc {
+  font: var(--Description);
+  font-weight: 400;
+}
+
+@media screen and (max-width: 425px) {
+  .P1 {
+    font: var(--P1);
+    font-weight: 400;
+  }
+
+  .P2 {
+    font: var(--P3) !important;
+    font-weight: 400;
+  }
+
+  .P3 {
+    font: var(--P3);
+    font-weight: 400;
+  }
+
+  .desc {
+    font: var(--Description2);
+  }
 }

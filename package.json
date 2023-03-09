@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "sideEffects": true,
   "engines": {
     "npm": "8.19.2",
     "node": "18.12.1"
@@ -21,7 +22,7 @@
     "generate:slice": "node ./scripts/createSlice/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alsamman",
   "license": "ISC",
   "browserslist": {
     "production": [
@@ -49,7 +50,7 @@
     "@types/circular-dependency-plugin": "^5.0.5",
     "@types/dotenv-webpack": "^7.0.3",
     "@types/jest": "^29.1.2",
-    "@types/node": "^18.7.18",
+    "@types/node": "^18.14.6",
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
     "@types/react-router-dom": "^5.3.3",

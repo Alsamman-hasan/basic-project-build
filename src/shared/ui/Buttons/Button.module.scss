@@ -1,97 +1,88 @@
 .Button {
   cursor: pointer; 
-  border-radius: 8px;
+  border-radius: 4px;
+  // display: flex;
+  // justify-content: center;
+  // gap: 1rem;
   &:disabled {
     cursor: not-allowed;
   }
 }
 
-.ghost {
-  border: none;
+.Quaternary {
+  border: 1px solid var(--white);
   background:none;
-  color: var(--white-100);
-  fill: var(--white-100);
+  padding: 13px 36px 12px;
+  color: var(--white);
+  fill: var(--white);
   &:not(:disabled):hover{
-    background: var(--white-10);
+    color: var(--blue);
+    background: var(--white);
   }
 
   &:disabled {
-    color: var(--white-20);
-    fill: var(--white-20) ;
+    color: var(--white);
+    fill: var(--white) ;
   }
 }
 
 .primary {
-  background: var(--red-100);
-  color: var(--white-100);
-  fill: var(--white-100) ;
+  background: var(--blue);
+  color: var(--white);
+  fill: var(--white) ;
+  padding: 13px 36px 12px;
   border: none;
   &:not(:disabled):hover{
-    background: var(--red-hover-100);
+    background: var(--gradient);
   }
   &:disabled {
-    background: var(--white-5);
-    color: var(--white-10);
-    fill: var(--white-10) ;
+    opacity: 0.6;
   }
 }
 
-
-.outline {
-  border: 1px solid var(--red-100);
-  background: none;
-  color: var(--white-100);
-  fill: var(--white-100) ;
-
-  &:not(:disabled):hover{
-    border-color: var(--red-hover-100);
-  }
-
-  &:disabled {
-    color: var(--white-20);
-    fill: var(--white-20) ;
-  }
-}
 
 .secondary {
   border: none;
-  background: var(--white-5);
-  color: var(--white-100);
-  fill: var(--white-100);
-
+  background: var(--white);
+  color: var(--blue);
+  fill: var(--blue);
+  padding: 13px 36px 12px;
+  border: 1px solid #223DCB;
   &:not(:disabled):hover{
-    background: var(--white-10);
+    background: var(--blue);
+    color: var(--white);
   }
 
   &:disabled {
-    color: var(--white-5);
-    fill: var(--white-5) ;
+    opacity: 0.6;
   }
 }
 
 .large {
   min-width: 2.75rem;
   min-height: 2.75rem;
-  padding: 0.5rem 1rem;
-  font-weight: 600 !important;
-  font: var(--H3);
+  font-weight: 700 !important;
+  font: var(--P2);
+  text-transform: uppercase;
 }
 
 .medium {
   min-width: 1.75rem;
   min-height: 1.75rem;
-  padding: 0.25rem 0.5rem;
   font-weight: 400 !important;
-  font: var(--12-20-semiBold);
+  font: var(--P2);
+  text-transform: uppercase;
 }
 
-.iconAfter , .iconBefor {
+.iconBefor {
+  padding: 10px 36px 10px 32px;
   display: flex;
   gap: 0.5rem;
   align-items: center;
 }
 
 .iconOnly {
+  padding: 8px 16px;
   text-align: center;
 }
 

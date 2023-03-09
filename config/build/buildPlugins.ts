@@ -1,13 +1,13 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import webpack, { WebpackPluginInstance } from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import CopyPlugin from 'copy-webpack-plugin';
-import CircularDependencyPlugin from 'circular-dependency-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import Dotenv from 'dotenv-webpack';
-import { IBuildOptioins } from './types/config';
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import webpack, { WebpackPluginInstance } from "webpack";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import CopyPlugin from "copy-webpack-plugin";
+import CircularDependencyPlugin from "circular-dependency-plugin";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import Dotenv from "dotenv-webpack";
+import { IBuildOptioins } from "./types/config";
 
 export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
   const { paths, isDev, apiUrl } = options;
@@ -48,7 +48,7 @@ export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
           semantic: true,
           syntactic: true,
         },
-        mode: 'write-references',
+        mode: "write-references",
       },
     }),
   ];
@@ -58,15 +58,15 @@ export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
     plugins.push(new ReactRefreshWebpackPlugin());
     plugins.push(
       new BundleAnalyzerPlugin({
-        openAnalyzer: false,
+        openAnalyzer: true,
       })
     );
   }
   if (isProd) {
     plugins.push(
       new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash:8].css',
-        chunkFilename: 'css/[name].[contenthash:8].css',
+        filename: "css/[name].[contenthash:8].css",
+        chunkFilename: "css/[name].[contenthash:8].css",
       })
     );
     plugins.push(

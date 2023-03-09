@@ -1,13 +1,16 @@
 import {
+  AnyAction,
   CombinedState,
   configureStore,
   Reducer,
   ReducersMapObject,
+  ThunkDispatch,
 } from "@reduxjs/toolkit";
 import { $api } from "@/shared/api/api";
 
 import { createReducerManager } from "./reduserManager";
-import { StateSchema, ThunkExtraArg } from "./StateSchema";
+import { StateSchema, ThunkExtraArg, TStore } from "./StateSchema";
+import { rtkApi } from "@/shared/api/rtkApi";
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -15,6 +18,8 @@ export function createReduxStore(
 ) {
   const rootReducer: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
+    // last
+    [rtkApi.reducerPath]: rtkApi.reducer,
   };
 
   const reducerManager = createReducerManager(rootReducer);
@@ -30,13 +35,13 @@ export function createReduxStore(
         thunk: {
           extraArgument: extraArg,
         },
-      }),
-  });
+        serializableCheck: false,
+      }).concat(rtkApi.middleware),
+  }) as TStore;
 
-  // @ts-ignore
   store.reducerManager = reducerManager;
 
   return store;
 }
 
-export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
+export type AppDispatch = ThunkDispatch<StateSchema, ThunkExtraArg, AnyAction>;
