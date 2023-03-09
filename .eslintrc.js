@@ -6,6 +6,8 @@ module.exports = {
   },
   extends: [
     "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
     "airbnb",
     "prettier",
     "plugin:react-hooks/recommended",
@@ -22,6 +24,7 @@ module.exports = {
   },
   plugins: [
     "react",
+    "ulbi-tv-plugin",
     "@typescript-eslint",
     "react-hooks",
     "@typescript-eslint/eslint-plugin",
@@ -45,6 +48,30 @@ module.exports = {
     "react/jsx-filename-extension": [
       2,
       { extensions: [".js", ".jsx", ".tsx"] },
+    ],
+    "ulbi-tv-plugin/path-checker": [
+      "error",
+      {
+        alias: "@",
+      },
+    ],
+    "ulbi-tv-plugin/layer-imports": [
+      "error",
+      {
+        alias: "@",
+        ignoreImportPatterns: ["**/StoreProvider", "**/testing"],
+      },
+    ],
+    "ulbi-tv-plugin/public-api-imports": [
+      "error",
+      {
+        alias: "@",
+        testFilesPatterns: [
+          "**/*.test.*",
+          "**/*.story.*",
+          "**/StoreDecorator.tsx",
+        ],
+      },
     ],
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
