@@ -2,6 +2,7 @@ import webpack from "webpack";
 import { IBuildOptioins } from "./types/config";
 import { buildBabelLoader } from "./loaders/babelLoader";
 import { buildCssLoader } from "./loaders/cssLoader";
+import { buildFileLoader } from "./loaders/buildFileLoader";
 
 export function buildLoaders(options: IBuildOptioins): webpack.RuleSetRule[] {
   const { isDev } = options;
@@ -9,20 +10,21 @@ export function buildLoaders(options: IBuildOptioins): webpack.RuleSetRule[] {
     test: /\.svg$/,
     use: ["@svgr/webpack"],
   };
-  const jsonLoader = { test: /\.json$/, type: "json" };
+
   const codeBabelLoader = buildBabelLoader({ ...options, isTsx: false });
   const tsxCodeBabelLoader = buildBabelLoader({ ...options, isTsx: true });
   const cssLoader = buildCssLoader(isDev);
+  const imageLoader = buildFileLoader(isDev);
   const fileLoader = {
-    test: /\.(png|jpe?g|gif|woff2|woff||ttf)$/i,
+    test: /\.(woff2|woff||ttf)$/i,
     type: "asset/resource",
   };
 
   return [
     fileLoader,
+    imageLoader,
     svgLoader,
     codeBabelLoader,
-    jsonLoader,
     tsxCodeBabelLoader,
     cssLoader,
   ];

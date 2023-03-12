@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import { CircularProgress } from "@mui/material";
+// import { CircularProgress } from "@mui/material";
 import { ButtonHTMLAttributes, memo, ReactNode, SVGProps } from "react";
 import { classNames } from "../../lib/classNames/classNames";
+import { Loader } from "../Loader/Loader";
 import cls from "./Button.module.scss";
 
 export type ButtonTheme = "primary" | "Quaternary" | "secondary";
@@ -66,7 +67,7 @@ export const ButtonUi = memo((props: ButtonProps) => {
       <>
         {layOut === "IconBefor" && icon}
         {children && layOut !== "IconOnly" ? <span> {children}</span> : icon}
-        {isLoading && <CircularProgress size={17} color="info" />}
+        {isLoading && <Loader />}
       </>
     </button>
   );

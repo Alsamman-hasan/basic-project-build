@@ -71,7 +71,13 @@ export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
     );
     plugins.push(
       new CopyPlugin({
-        patterns: [{ from: paths.robots }, { from: paths.manifest }],
+        patterns: [
+          { from: paths.robots },
+          { from: paths.manifest },
+          {
+            from: "images/",
+          },
+        ],
       })
     );
   }
