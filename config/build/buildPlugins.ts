@@ -87,8 +87,8 @@ export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
     plugins.push(
       new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
         PUBLIC_URL: publicUrl,
-      }),
-    )
+      })
+    );
   }
   return plugins;
 }
