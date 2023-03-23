@@ -9,6 +9,7 @@ export interface BuildPaths {
   robots: string;
   manifest: string;
   public: string;
+  envPath: string;
 }
 
 export interface IBuildOptioins {
@@ -17,10 +18,13 @@ export interface IBuildOptioins {
   isDev: boolean;
   port: number;
   apiUrl: string;
+  publicUrl: string;
 }
 
 export interface BuildEnv {
   mode: BuildMode;
   port: number;
   apiUrl: string;
+  publicUrl: string;
+
 }

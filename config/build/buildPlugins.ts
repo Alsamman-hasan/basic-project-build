@@ -2,6 +2,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import webpack, { WebpackPluginInstance } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import InterpolateHtmlPlugin from "react-dev-utils/InterpolateHtmlPlugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import CopyPlugin from "copy-webpack-plugin";
 import CircularDependencyPlugin from "circular-dependency-plugin";
@@ -10,7 +11,7 @@ import Dotenv from "dotenv-webpack";
 import { IBuildOptioins } from "./types/config";
 
 export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
-  const { paths, isDev, apiUrl } = options;
+  const { paths, isDev, apiUrl, publicUrl } = options;
   const isProd = !isDev;
   const plugins = [
     new webpack.ProgressPlugin(),
@@ -41,7 +42,10 @@ export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
       exclude: /node_modules/,
       failOnError: true,
     }),
-    new Dotenv(),
+    new Dotenv({
+      path: paths.envPath,
+      safe: true,
+    }),
     new ForkTsCheckerWebpackPlugin({
       typescript: {
         diagnosticOptions: {
@@ -80,6 +84,11 @@ export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
         ],
       })
     );
+    plugins.push(
+      new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
+        PUBLIC_URL: publicUrl,
+      }),
+    )
   }
   return plugins;
 }

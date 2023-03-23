@@ -13,6 +13,7 @@ export default (env: BuildEnv) => {
     src: path.resolve(__dirname, "src"),
     manifest: path.resolve(__dirname, "public", "manifest.json"),
     public: path.resolve(__dirname, "public"),
+    envPath: path.resolve(__dirname, "./.env"),
   };
 
   const mode = env.mode || "development";
@@ -20,6 +21,7 @@ export default (env: BuildEnv) => {
   // const apiUrl = env.apiUrl || "https://yourAPI";
   const apiUrl = env.apiUrl || "http://localhost:5000/";
   const PORT = env.port || 3000;
+  const publicUrl = env.publicUrl || `http://localhost:${PORT}`;
 
   const config: webpack.Configuration = buildWebpackConfig({
     mode,
@@ -27,6 +29,7 @@ export default (env: BuildEnv) => {
     isDev,
     port: PORT,
     apiUrl,
+    publicUrl,
   });
 
   return config;
