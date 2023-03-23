@@ -10,7 +10,7 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import Dotenv from "dotenv-webpack";
 import { IBuildOptioins } from "./types/config";
 
-export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
+export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] |any[] {
   const { paths, isDev, apiUrl, publicUrl } = options;
   const isProd = !isDev;
   const plugins = [
@@ -33,7 +33,9 @@ export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
           }
         : undefined,
     }),
-
+    new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
+      PUBLIC_URL: publicUrl,
+    }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
       __API__: JSON.stringify(apiUrl),
@@ -78,15 +80,7 @@ export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] {
         patterns: [
           { from: paths.robots },
           { from: paths.manifest },
-          {
-            from: "images/",
-          },
         ],
-      })
-    );
-    plugins.push(
-      new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
-        PUBLIC_URL: publicUrl,
       })
     );
   }
