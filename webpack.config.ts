@@ -1,35 +1,48 @@
 import path from "path";
+import dotenv from "dotenv";
+import getPublicUrlOrPath from "react-dev-utils/getPublicUrlOrPath";
 import webpack from "webpack";
 import { buildWebpackConfig } from "./config/build/buildWebpack.config";
 import { BuildEnv, BuildPaths } from "./config/build/types/config";
 
 export default (env: BuildEnv) => {
+  const resolveApp = (relativePath: string) =>
+    path.resolve(__dirname, relativePath);
+
   const paths: BuildPaths = {
-    entry: path.resolve(__dirname, "src", "index.tsx"),
-    build: path.resolve(__dirname, "build"),
-    html: path.resolve(__dirname, "public", "index.html"),
-    robots: path.resolve(__dirname, "public", "robots.txt"),
-    icon: path.resolve(__dirname, "public", "testLogo.svg"),
-    src: path.resolve(__dirname, "src"),
-    manifest: path.resolve(__dirname, "public", "manifest.json"),
-    public: path.resolve(__dirname, "public"),
-    envPath: path.resolve(__dirname, "./.env"),
+    appTsConfig: resolveApp("tsconfig.json"),
+    appWebpackCache: resolveApp("node_modules/.cache"),
+    build: resolveApp("build"),
+    entry: resolveApp("src/index.tsx"),
+    envPath: resolveApp("./.env"),
+    html: resolveApp("public/index.html"),
+    icon: resolveApp("public/logo64.png"),
+    indexCss: resolveApp("public/index.css"),
+    logo192: resolveApp("public/logo192.png"),
+    manifest: resolveApp("public/manifest.json"),
+    public: resolveApp("public"),
+    robots: resolveApp("public/robots.txt"),
+    src: resolveApp("src"),
   };
+  dotenv.config().parsed || {};
 
   const mode = env.mode || "development";
   const isDev = mode === "development";
-  // const apiUrl = env.apiUrl || "https://yourAPI";
-  const apiUrl = env.apiUrl || "http://localhost:5000/";
-  const PORT = env.port || 3000;
-  const publicUrl = env.publicUrl || `http://localhost:${PORT}`;
+  const { apiUrl } = env;
+  const PORT = Number(process.env.APP_PORT);
 
+  const publicUrlOrPath = getPublicUrlOrPath(
+    isDev,
+    ".",
+    process.env.PUBLIC_URL
+  );
   const config: webpack.Configuration = buildWebpackConfig({
+    apiUrl,
+    isDev,
     mode,
     paths,
-    isDev,
     port: PORT,
-    apiUrl,
-    publicUrl,
+    publicUrl: publicUrlOrPath,
   });
 
   return config;

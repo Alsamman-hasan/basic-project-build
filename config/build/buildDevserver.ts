@@ -1,13 +1,23 @@
-import { Configuration as DevServerConfiguration } from "webpack-dev-server";
-import { IBuildOptioins } from "./types/config";
+import path from 'path';
+import { Configuration as DevServerConfiguration } from 'webpack-dev-server';
+import { IBuildOptions } from './types/config';
 
-export function buildDevServer(
-  options: IBuildOptioins
-): DevServerConfiguration {
+export function buildDevServer(options: IBuildOptions): DevServerConfiguration {
   return {
-    port: options.port,
-    open: true,
+    allowedHosts: options.isDev ? 'all' : undefined,
+    client: {
+      progress: true,
+    },
+    compress: true,
+    devMiddleware: {
+      publicPath: 'https://localhost:3000',
+    },
     historyApiFallback: true,
-    hot: true,
+    hot: 'only',
+    open: true,
+    port: options.port,
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
   };
 }

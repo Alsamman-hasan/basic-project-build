@@ -1,10 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  DynamicModuleLoader,
-  ReducersList,
-} from "@/shared/lib/componnets/DynamicModuleLoader/DynamicModuleLoader";
 import { getCounterValue } from "../model/selecters/getCounter/getCounter";
 import { counterActions, counterReducer } from "../model/slice/counterSlice";
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components';
 
 const Reducers: ReducersList = {
   counter: counterReducer,

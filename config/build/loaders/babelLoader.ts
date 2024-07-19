@@ -1,33 +1,41 @@
-import babelRemovePropsPlugin from "../../babel/babelRemovePropsPlugin";
-import { IBuildOptioins } from "../types/config";
+import babelRemovePropsPlugin from '../../babel/babelRemovePropsPlugin';
+import { IBuildOptions } from '../types/config';
 
-interface buildBabelLoaderProps extends IBuildOptioins {
+interface buildBabelLoaderProps extends IBuildOptions {
   isTsx?: boolean;
 }
 
 export function buildBabelLoader({ isDev, isTsx }: buildBabelLoaderProps) {
   return {
-    test: isTsx ? /\.(js|jsx|tsx)$/ : /\.(js|ts)$/,
     exclude: /node_modules/,
+    test: isTsx ? /\.(js|jsx|tsx)$/ : /\.(js|ts)$/,
     use: {
-      loader: "babel-loader",
+      loader: require.resolve('babel-loader'),
       options: {
-        presets: ["@babel/preset-env"],
+        cacheCompression: false,
+        cacheDirectory: true,
+        compact: !isDev,
         plugins: [
-          ["@babel/plugin-transform-typescript", { isTsx }],
-          "@babel/plugin-transform-runtime",
+          ['@babel/plugin-transform-typescript', { isTsx }],
+          '@babel/plugin-transform-runtime',
           isTsx &&
             !isDev && [
               babelRemovePropsPlugin,
               {
-                props: ["data-testid"],
+                props: ['data-testid'],
               },
             ],
-          isDev && require.resolve("react-refresh/babel"),
+          isDev && require.resolve('react-refresh/babel'),
         ].filter(Boolean),
-        cacheDirectory: true,
-        cacheCompression: false,
-        compact: !isDev,
+        // presets: [
+        //   [
+        //     require.resolve('@babel/preset-react'),
+        //     {
+        //       runtime: isTsx ? 'automatic' : 'classic',
+        //     },
+        //   ],
+        // ],
+        presets: ['@babel/preset-env'],
       },
     },
   };

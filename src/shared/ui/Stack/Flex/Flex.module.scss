@@ -18,6 +18,9 @@
   justify-content: space-between;
 }
 
+.justifyAround {
+  justify-content: space-around;
+}
 
 .alignStart {
   align-items: flex-start;
@@ -31,12 +34,14 @@
   align-items: flex-end;
 }
 
-.derictionRow {
+.depictionRow {
   flex-direction: row;
 }
-.derictionColumn {
+
+.depictionColumn {
   flex-direction: column;
 }
+
 .max {
   width: 100%;
 }

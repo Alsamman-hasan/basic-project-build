@@ -1,4 +1,4 @@
-declare module "*.scss" {
+declare module '*.scss' {
   interface IClassNames {
     [className: string]: string;
   }
@@ -6,15 +6,29 @@ declare module "*.scss" {
   export = classNames;
 }
 
-declare module "*.png";
-declare module "*.jpg";
-declare module "*.jpeg";
+declare module '*.png';
+declare module '*.jpg';
+declare module '*.jpeg';
 
-declare module "*.svg" {
-  import { FC, SVGProps } from "react";
+declare module '*.svg' {
+  import { FC, SVGProps } from 'react';
 
   const SVG: FC<SVGProps<SVGSVGElement>>;
   export default SVG;
+}
+
+interface AutocompleteUiItem<T extends string> {
+  title: T;
+  id: string | number;
+}
+interface Autocomplete<T> {
+  value: string;
+  label: T;
+}
+
+interface SelectItems<T extends string> {
+  name: T;
+  id: string | number;
 }
 
 declare const __IS_DEV__: boolean;

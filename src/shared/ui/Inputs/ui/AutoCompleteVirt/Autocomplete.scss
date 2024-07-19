@@ -1,0 +1,126 @@
+.menuItem {
+  border-radius: 4px 4px 0px 0px !important;
+  padding: 11px 16px 12px !important;
+  border-bottom: 1px solid var(--grey) !important;
+  &:hover {
+    background: var(--main-color)!important;
+    color: var(--white);
+  } 
+}
+.Autocomplete {
+  width: 100%;
+  .MuiAutocomplete-root {
+    color: var(--black) !important;
+    .MuiInputBase-root {
+      padding: 0;
+    }
+    .MuiOutlinedInput-root {
+      padding-right: 0 !important;
+    }
+  }
+  &__menuItem {
+      border-radius: 4px 4px 0px 0px !important;
+      padding: 11px 16px 12px !important;
+      border-bottom: 1px solid var(--grey) !important;
+      &:hover {
+        background: var(--main-color)!important;
+        color: var(--white);
+    }
+  }
+
+}
+
+.MuiListSubheader-root {
+   border-radius: 4px 4px 0px 0px !important;
+  padding: 11px 16px 12px !important;
+}
+
+#Autocomplete-listbox {
+  padding: 0.5rem !important;
+  &>div {
+    &>li {
+      border-radius: 4px 4px 0px 0px !important;
+      padding: 11px 16px 12px !important;
+      border-bottom: 1px solid var(--grey);
+      &:hover {
+        background: var(--main-color)!important;
+        color: var(--white);
+      }
+    }
+  }
+}
+
+.MuiAutocomplete-paper {
+  margin-top: 10px ;
+}
+
+
+.MuiAutocomplete-option[aria-selected="true"] {
+  background: var(--main-color)!important;
+  color: var(--white);
+}
+
+.AutocompleteInputUi {
+  border-radius: 0.25rem;
+  outline: none !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+
+  .MuiTextField-root {
+    width: 100%;
+	  background: var(--white) !important;
+    .MuiOutlinedInput-notchedOutline {
+      border: 1px solid var(--light-grey);
+      background: transparent;
+    }
+    .MuiInputLabel-root {
+      font-family: var(--font-family-main);
+      color:var(--black);
+    }
+
+    .MuiOutlinedInput-input {
+      box-sizing: border-box;
+      width: 100%;
+      height: 2.75rem;
+      padding: 0.625rem 2.25rem 0.625rem 1.25rem !important;
+      font: var(--P3);
+      color: var(--black);
+      &:-webkit-autofill {
+        transition: background-color 600000s 0s, color 600000s 0s !important;
+      }
+    }
+
+    .MuiOutlinedInput-root:hover fieldset {
+      border-color: var(--grey);
+    }
+
+    .MuiAutocomplete-clearIndicator {
+      z-index: 10 !important;
+    }
+
+    .MuiInputAdornment-root {
+      z-index: 3;
+    }
+
+    [class*="Mui-focused"] {
+      .MuiOutlinedInput-notchedOutline {
+        border: 1px solid var(--grey) !important;
+        outline: none;
+      }
+    }
+    
+  }
+
+  .MuiOutlinedInput-input::placeholder {
+    color: var(--black);
+  }
+
+  .MuiOutlinedInput-root:focus-visible {
+    outline-offset: unset;
+    outline: none;
+  }
+
+}

@@ -1,4 +1,4 @@
-export type BuildMode = "development" | "production";
+export type BuildMode = 'development' | 'production';
 
 export interface BuildPaths {
   entry: string;
@@ -10,9 +10,13 @@ export interface BuildPaths {
   manifest: string;
   public: string;
   envPath: string;
+  logo192: string;
+  indexCss: string;
+  appTsConfig: string;
+  appWebpackCache: string;
 }
 
-export interface IBuildOptioins {
+export interface IBuildOptions {
   mode: BuildMode;
   paths: BuildPaths;
   isDev: boolean;

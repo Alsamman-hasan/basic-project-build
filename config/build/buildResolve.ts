@@ -1,14 +1,17 @@
-import { ResolveOptions } from "webpack";
-import { IBuildOptioins } from "./types/config";
+import { ResolveOptions } from 'webpack';
+import { IBuildOptions } from './types/config';
 
-export function buildResolves(options: IBuildOptioins): ResolveOptions {
+export function buildResolves(options: IBuildOptions): ResolveOptions {
   return {
-    extensions: [".tsx", ".ts", ".js"],
-    preferAbsolute: true, //
-    modules: [options.paths.src, "node_modules"],
-    mainFiles: ["index"],
     alias: {
-      "@": options.paths.src,
+      '@': options.paths.src,
     },
+
+    extensions: ['.tsx', '.ts', '.js'],
+
+    mainFiles: ['index'],
+    //
+    modules: [options.paths.src, 'node_modules'],
+    preferAbsolute: true,
   };
 }

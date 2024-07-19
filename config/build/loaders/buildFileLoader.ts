@@ -1,6 +1,6 @@
-export function buildFileLoader(isDev: boolean) {
+export function buildFileLoader() {
   return {
     test: /\.(png|jpe?g|gif)$/i,
-    type: "asset",
+    type: 'asset',
   };
 }

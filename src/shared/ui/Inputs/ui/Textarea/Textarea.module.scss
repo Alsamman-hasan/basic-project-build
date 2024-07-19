@@ -1,0 +1,79 @@
+.TextArea {
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.TextAreaWrapper {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 100%;
+  padding: 0;
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.TextArea label {
+  grid-row: 1;
+}
+
+.TextArea textarea {
+  width: 100%;
+  height: 8.4rem;
+  outline: unset;
+  border-radius: 4px;
+  padding: 0.625rem 2.25rem 0.625rem 1.25rem;
+  font: var(--P3);
+  border: 1px solid var(--light-grey);
+}
+
+.TextArea textarea:focus {
+  border-color: var(--grey);
+}
+.TextArea textarea:hover {
+  border-color: var(--grey);
+}
+
+.Label {
+  color: var(--black)
+}
+
+.error {
+  position: absolute;
+  left: 0;
+  color: var(--red);
+  display: none;
+}
+
+.TextArea { 
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+  }
+  textarea:invalid[aria-invalid="true"]{
+    border: 1px solid var(--red);
+  }
+}
+
+.TextArea {
+  textarea:invalid[aria-invalid="true"] ~ .error{
+    display: block;
+  } 
+}
+
+.errors {
+  border: 1px solid var(--red) !important;
+}
+
+.errorMessage {
+  display: block;
+}

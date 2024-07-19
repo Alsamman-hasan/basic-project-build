@@ -1,6 +1,5 @@
 
 .checkbox {
-  // margin: 15px auto;
   position: relative;
   display: block;
 }
@@ -12,10 +11,12 @@
   left: 0;
   margin-left: -20px;
 }
+
 .checkbox label {
   position: relative;
 }
-.checkbox label:before {
+
+.checkbox label::before {
   content: '';
   position: absolute;
   left: 0;
@@ -28,17 +29,17 @@
   border: 1px solid var(--dark-grey);
 }
 
-.checkbox label:hover:before {
-  border: 1px solid var(--blue);
+.checkbox label:hover::before {
+  border: 1px solid var(--main-color);
 }
-.checkbox label:after {
+
+.checkbox label::after {
   content: '';
   display: block;
   width: 0.625rem;
   height: 0.3125rem;
   border-bottom: 2px solid var(--white);
   border-left: 2px solid var(--white);
-  -webkit-transform: rotate(-45deg) scale(0);
   transform: rotate(-45deg) scale(0);
   transition: transform ease 0.25s;
   will-change: transform;
@@ -46,13 +47,13 @@
   top: 0.625rem;
   left: 0.625rem;
 }
+
 .checkbox input[type="checkbox"]:checked ~ label::before {
-  background: var(--blue);
-  border: 1px solid var(--blue);
+  background: var(--main-color);
+  border: 1px solid var(--main-color);
 }
 
 .checkbox input[type="checkbox"]:checked ~ label::after {
-  -webkit-transform: rotate(-45deg) scale(1);
   transform: rotate(-45deg) scale(1);
     
 }
@@ -65,16 +66,38 @@
   cursor: pointer;
   vertical-align: sub;
 }
+
 .checkbox label span {
   position: absolute;
   top: 50%;
-  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
 .checkbox input[type="checkbox"]:focus + label::before {
   outline: 0;
 }
 
 .label{
   padding-top: 7px;
+  font: var(--P3);
+}
+
+.error {
+  position: absolute;
+  left: 0;
+  top: 2rem;
+  color: var(--red);
+  display: none;
+}
+
+input:invalid[aria-invalid="true"]~.error {
+  display: block;
+}
+
+.errors {
+  border: 1px solid var(--red) !important;
+}
+
+.errorMessage {
+  display: block;
 }

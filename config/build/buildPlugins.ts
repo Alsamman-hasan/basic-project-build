@@ -1,61 +1,77 @@
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import webpack, { WebpackPluginInstance } from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
-import InterpolateHtmlPlugin from "react-dev-utils/InterpolateHtmlPlugin";
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
-import CopyPlugin from "copy-webpack-plugin";
-import CircularDependencyPlugin from "circular-dependency-plugin";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import Dotenv from "dotenv-webpack";
-import { IBuildOptioins } from "./types/config";
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
+import webpack, { WebpackPluginInstance } from 'webpack';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { IBuildOptions } from './types/config';
 
-export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] |any[] {
+export function buildPlugins(options: IBuildOptions): WebpackPluginInstance[] {
   const { paths, isDev, apiUrl, publicUrl } = options;
   const isProd = !isDev;
+  const HTMLWebpackPl = new HtmlWebpackPlugin({
+    favicon: paths.icon,
+    inject: true,
+    minify: !isDev
+      ? {
+          collapseWhitespace: true,
+          keepClosingSlash: true,
+          minifyCSS: true,
+          minifyJS: true,
+          minifyURLs: true,
+          removeComments: true,
+          removeEmptyAttributes: true,
+          removeRedundantAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          useShortDoctype: true,
+        }
+      : undefined,
+    template: paths.html,
+  });
   const plugins = [
     new webpack.ProgressPlugin(),
-    new HtmlWebpackPlugin({
-      template: paths.html,
-      favicon: paths.icon,
-      minify: !isDev
-        ? {
-            removeComments: true,
-            collapseWhitespace: true,
-            removeRedundantAttributes: true,
-            useShortDoctype: true,
-            removeEmptyAttributes: true,
-            removeStyleLinkTypeAttributes: true,
-            keepClosingSlash: true,
-            minifyJS: true,
-            minifyCSS: true,
-            minifyURLs: true,
-          }
-        : undefined,
-    }),
-    new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
-      PUBLIC_URL: publicUrl,
-    }),
+    HTMLWebpackPl,
     new webpack.DefinePlugin({
-      __IS_DEV__: JSON.stringify(isDev),
       __API__: JSON.stringify(apiUrl),
+      __IS_DEV__: JSON.stringify(isDev),
     }),
     new CircularDependencyPlugin({
       exclude: /node_modules/,
       failOnError: true,
     }),
-    new Dotenv({
-      path: paths.envPath,
-      safe: true,
-    }),
+    new Dotenv({ path: paths.envPath, safe: true, systemvars: true }),
     new ForkTsCheckerWebpackPlugin({
+      async: isDev,
       typescript: {
+        configOverwrite: {
+          compilerOptions: {
+            declarationMap: false,
+            incremental: true,
+            inlineSourceMap: false,
+            noEmit: true,
+            skipLibCheck: true,
+            sourceMap: isDev ? false : isDev,
+          },
+        },
         diagnosticOptions: {
           semantic: true,
           syntactic: true,
         },
-        mode: "write-references",
+        mode: 'write-references',
       },
+    }),
+    new InterpolateHtmlPlugin(HtmlWebpackPlugin, { PUBLIC_URL: publicUrl }),
+    new CopyPlugin({
+      patterns: [
+        { from: paths.robots },
+        { from: paths.manifest },
+        { from: paths.logo192 },
+        { from: paths.indexCss },
+      ],
     }),
   ];
 
@@ -64,25 +80,17 @@ export function buildPlugins(options: IBuildOptioins): WebpackPluginInstance[] |
     plugins.push(new ReactRefreshWebpackPlugin());
     plugins.push(
       new BundleAnalyzerPlugin({
-        openAnalyzer: true,
-      })
+        openAnalyzer: false,
+      }),
     );
   }
-  if (isProd) {
+  if (isProd)
     plugins.push(
       new MiniCssExtractPlugin({
-        filename: "css/[name].[contenthash:8].css",
-        chunkFilename: "css/[name].[contenthash:8].css",
-      })
+        chunkFilename: 'css/[name].[contenthash:8].css',
+        filename: 'css/[name].[contenthash:8].css',
+      }),
     );
-    plugins.push(
-      new CopyPlugin({
-        patterns: [
-          { from: paths.robots },
-          { from: paths.manifest },
-        ],
-      })
-    );
-  }
-  return plugins;
+
+  return plugins as WebpackPluginInstance[];
 }

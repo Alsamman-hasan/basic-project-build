@@ -1,27 +1,28 @@
-import { HTMLAttributes, memo, ReactNode } from "react";
-import { classNames, Mods } from "../../../lib/classNames/classNames";
-import cls from "./Flex.module.scss";
+import { CSSProperties, HTMLAttributes, memo, ReactNode } from 'react';
+import cls from './Flex.module.scss';
+import { classNames, Mods } from '../../../lib/classNames/classNames';
 
-export type FlexJustify = "start" | "center" | "end" | "between";
-export type FlexAlign = "start" | "center" | "end";
-export type FlexDirection = "row" | "column";
+export type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around';
+export type FlexAlign = 'start' | 'center' | 'end';
+export type FlexDirection = 'row' | 'column';
 
 const justifyClass: Record<FlexJustify, string> = {
-  start: cls.justifyStart,
+  around: cls.justifyAround,
+  between: cls.justifyBetween,
   center: cls.justifyCenter,
   end: cls.justifyEnd,
-  between: cls.justifyBetween,
+  start: cls.justifyStart,
 };
 
 const alignClass: Record<FlexAlign, string> = {
-  start: cls.alignStart,
   center: cls.alignCenter,
   end: cls.alignEnd,
+  start: cls.alignStart,
 };
 
 const directionClass: Record<FlexDirection, string> = {
-  column: cls.derictionColumn,
-  row: cls.derictionRow,
+  column: cls.depictionColumn,
+  row: cls.depictionRow,
 };
 
 export interface FlexProps extends HTMLAttributes<HTMLDivElement> {
@@ -32,16 +33,18 @@ export interface FlexProps extends HTMLAttributes<HTMLDivElement> {
   direction: FlexDirection;
   gap?: number | string;
   max?: boolean;
+  style?: CSSProperties;
 }
 
 export const Flex = memo((props: FlexProps) => {
   const {
     className,
     children,
-    direction = "row",
-    align = "center",
-    justify = "start",
+    direction = 'row',
+    align = 'center',
+    justify = 'start',
     gap = 0,
+    style,
     max,
     ...otherProps
   } = props;
@@ -57,7 +60,7 @@ export const Flex = memo((props: FlexProps) => {
   };
   return (
     <div
-      style={{ gap }}
+      style={{ ...style, gap: `${gap}rem` }}
       className={classNames(cls.Flex, mods, classess)}
       {...otherProps}
     >

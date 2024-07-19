@@ -1,11 +1,11 @@
-import { CSSProperties, InputHTMLAttributes, memo, ReactNode } from "react";
-import { classNames } from "../../lib/classNames/classNames";
-import cls from "./Checkbox.module.scss";
-import { PTag } from "../Paragraph/P";
+import { CSSProperties, InputHTMLAttributes, memo, ReactNode } from 'react';
+import cls from './Checkbox.module.scss';
+import { classNames } from '../../lib/classNames/classNames';
+import { PTag } from '../Paragraph/P';
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  "checked" | "onChange" | "readOnly"
+  'checked' | 'onChange' | 'readOnly'
 >;
 
 export interface CheckboxProps extends HTMLInputProps {
@@ -16,6 +16,8 @@ export interface CheckboxProps extends HTMLInputProps {
   label?: string | ReactNode;
   name: string;
   style?: CSSProperties;
+  errorMessage?: string;
+  error?: boolean;
 }
 
 export const Checkbox = memo((props: CheckboxProps) => {
@@ -28,6 +30,9 @@ export const Checkbox = memo((props: CheckboxProps) => {
     label,
     name,
     style,
+    required,
+    error = false,
+    errorMessage,
     ...otherProps
   } = props;
 
@@ -40,18 +45,31 @@ export const Checkbox = memo((props: CheckboxProps) => {
       <input
         readOnly={readonly}
         style={style}
-        onChange={onChangeHandler}
-        type="checkbox"
+        type='checkbox'
         id={name}
         disabled={disabled}
         checked={checked}
+        onChange={onChangeHandler}
         {...otherProps}
+        required={required}
+        aria-invalid={error}
+        className={classNames('', {
+          [cls.errors]: Boolean(errorMessage),
+        })}
       />
       <label htmlFor={name}>
-        <PTag className={cls.label} tage="P3">
-          {label}
-        </PTag>
+        <div className={cls.label}>{label}</div>
       </label>
+      {!!errorMessage && (
+        <PTag
+          tage='desc'
+          className={classNames(cls.error, {
+            [cls.errorMessage]: Boolean(errorMessage),
+          })}
+        >
+          {errorMessage}
+        </PTag>
+      )}
     </div>
   );
 });

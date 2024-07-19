@@ -3,19 +3,23 @@
     "outDir": "./build/",
     "noImplicitAny": true,
     "module": "ESNext",
-    "target": "es6",
+    "target": "es2021",
     "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
-    "esModuleInterop" : true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "baseUrl": ".",
-    "paths":{
-      "@/*" : ["./src/*"],
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "paths": {
+      "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "ts-node": {
     "compilerOptions": {

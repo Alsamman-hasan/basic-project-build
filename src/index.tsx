@@ -6,6 +6,7 @@ import { ErrorBoundary } from "@/app/providers/ErrorBoundary/ui/ErrorBoundary";
 import { StoreProvider } from "@/app/providers/StorProvider";
 import { App } from "@/app/app";
 import reportWebVitals from "./reportWebVitals";
+import { SnackbarProviderUi } from './app/providers/SnackbarProvider/SnackbarProvider';
 
 const container = document.getElementById("root");
 
@@ -22,7 +23,9 @@ root.render(
     <BrowserRouter>
       <StoreProvider>
         <ErrorBoundary>
+          <SnackbarProviderUi>
           <App />
+          </SnackbarProviderUi>
         </ErrorBoundary>
       </StoreProvider>
     </BrowserRouter>
