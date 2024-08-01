@@ -1,0 +1,109 @@
+.select{
+	width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+	min-height: 2.75rem;
+		.MuiMenuItem-root{
+			justify-content:center !important ;
+		}
+	.MuiMenu-paper {
+		background: var(--white)!important;
+	}
+
+	.MuiSelect-select {
+		height: 2.75rem;
+		font: var(--P3);
+		color: var(--black);
+    padding: 0.625rem 2.25rem 0.625rem 1.25rem;
+		border-color: var(--grey);
+	}
+
+	.MuiInputLabel-root {
+		color:var(--grey);
+	}
+
+	.MuiOutlinedInput-notchedOutline {
+		
+		border: 1px solid var(--light-grey);
+
+		background: transparent;
+	}
+	.MuiOutlinedInput-root:hover fieldset {
+		border-color: var(--grey);
+	}
+
+	.MuiSelect-icon {
+		fill: var(--grey);
+		right: 20px;
+		top: calc(50% - 5px);
+	}
+
+	.Mui-focused {
+		 .MuiInputLabel-root {
+			color:var(--grey) !important;
+		}
+
+		#select-label {
+			color:var(--grey) !important;
+		}
+	}
+
+	.MuiOutlinedInput-root:focus-visible {
+		outline-offset: unset;
+		outline: none;
+	}
+
+
+
+	[class*="Mui-focused"] {
+		.MuiOutlinedInput-notchedOutline {
+			border: 1px solid var(--main-color) !important;
+			outline: none;
+		}
+	}
+	[class*="Mui-selected"] {
+		background: var(--main-color)!important;
+	}
+
+	&__menu-item{
+    padding: 11px 16px 12px !important;
+    border-bottom: 1px solid var(--light-grey) !important;
+		&:hover {
+			border-radius: 4px 4px 0px 0px;
+			background: var(--wight)!important;
+      color: var(--main-color);
+		}
+	}
+	.MuiOutlinedInput-input {
+		width: 100%;
+		height: 2.75rem;
+		padding: 0.75rem 1rem;
+		font: var(--P3);
+		color: var(--black);
+		z-index: 3;
+		&:-webkit-autofill {
+			transition: background-color 600000s 0s, color 600000s 0s !important;
+		}
+	}
+
+}
+
+
+.MuiPaper-root {
+	color: var(--black) !important;
+	background: var(--white) !important;
+}
+
+.MuiMenuItem-root{
+	font: var(--P3) !important;
+}
+.MuiList-root {
+	margin-top: 10px;
+	padding: 0 !important;
+		.Mui-selected  {
+			color:var(--white) !important;
+			border-radius: 4px 4px 0px 0px !important;
+			background: var(--main-color)!important;
+		}
+}

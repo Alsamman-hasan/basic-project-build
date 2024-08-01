@@ -1,0 +1,46 @@
+.btn {
+  font: var(--P2);
+  cursor: pointer;
+  padding: 0.5rem;
+  text-align: center;
+  border: 1px solid var(--light-grey);
+  margin-bottom: 12px;
+  min-width: 13rem;
+  height: 3rem;
+  &:hover {
+    color: var(--main-color);
+    background-color: var(--light-grey);
+  }
+}
+
+.element {
+  width: 100%;
+}
+.active {
+  color: var(--white);
+  background: var(--main-color);
+  &:hover {
+    color: var(--white);
+    background: var(--main-color);
+  }
+}
+
+.tabsWrapper {
+  overflow: auto;
+   &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--dark-grey );
+    border-radius: 4px;
+  }
+}
+
+
+@media screen and (width <= 485px) {
+  .element {
+    display: flex;
+    align-items: center;
+  }
+}

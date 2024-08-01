@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-function useMediaQuery(query: string): boolean {
-  const getMatches = (query: string): boolean => {
-    if (typeof window !== "undefined") {
-      return window.matchMedia(query).matches;
-    }
+export function useMediaQuery(query: string): boolean {
+  const getMatches = (queries: string): boolean => {
+    if (typeof window !== 'undefined')
+      return window.matchMedia(queries).matches;
+
     return false;
   };
 
@@ -18,22 +18,15 @@ function useMediaQuery(query: string): boolean {
     const matchMedia = window.matchMedia(query);
     handleChange();
 
-    if (matchMedia.addListener) {
-      matchMedia.addListener(handleChange);
-    } else {
-      matchMedia.addEventListener("change", handleChange);
-    }
+    if (matchMedia.addListener) matchMedia.addListener(handleChange);
+    else matchMedia.addEventListener('change', handleChange);
+
     return () => {
-      if (matchMedia.removeListener) {
-        matchMedia.removeListener(handleChange);
-      } else {
-        matchMedia.removeEventListener("change", handleChange);
-      }
+      if (matchMedia.removeListener) matchMedia.removeListener(handleChange);
+      else matchMedia.removeEventListener('change', handleChange);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   return matches;
 }
-
-export default useMediaQuery;

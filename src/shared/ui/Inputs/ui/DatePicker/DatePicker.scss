@@ -1,0 +1,130 @@
+.DataPicker {
+  position: relative;
+  border-radius: 4px;
+  outline: none !important;
+  width: 100%;
+
+  .error {
+    position: absolute;
+    left: 10px;
+    bottom: -13px;
+    color: var(--red);
+  }
+  
+  .MuiIconButton-root{
+    .MuiSvgIcon-root{
+      fill: var(--grey);
+    }
+  }
+
+  .InputUi {
+    border-radius: 0.25rem;
+    outline: none !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    .errorClass {
+      .MuiFormHelperText-root {
+        color: var(--red)!important;
+      }
+    }
+
+  }
+
+  .errorClass {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: red !important;
+      background: transparent;
+    }
+    
+  }
+
+  
+  .MuiTextField-root {
+    width: 100%;
+    .MuiOutlinedInput-notchedOutline {
+      border: 1px solid var(--light-grey);
+      background: transparent;
+    }
+
+    .MuiInputLabel-root {
+      font-family: var(--font-family-main);
+      color:var(--black);
+    }
+
+    .MuiOutlinedInput-input {
+      box-sizing: border-box;
+      width: 100%;
+      height: 2.75rem;
+      padding: 0.75rem 1.5rem;
+      color: var(--black);
+      z-index: 3;
+      &:-webkit-autofill {
+        transition: background-color 600000s 0s, color 600000s 0s !important;
+      }
+    }
+
+    .MuiOutlinedInput-root:hover fieldset {
+      border-color: var(--grey);
+    }
+
+
+    [class*="Mui-disabled"] {
+      &:hover {
+        .MuiOutlinedInput-notchedOutline {
+          background: transparent;
+          border-color: var(--red) !important;
+          color: var(--red) !important;
+        }
+      }
+
+      .MuiOutlinedInput-notchedOutline {
+        background: transparent;
+        color: var(--black);
+      }
+
+      .MuiOutlinedInput-input {
+        color: var(--black);
+        -webkit-text-fill-color: var(--black);
+      }
+
+      .MuiOutlinedInput-root fieldset {
+        border-color: var(--light-grey);
+      }
+
+      .MuiOutlinedInput-root:active fieldset {
+        border-color: var(--grey) !important;
+        border-width: 1px;
+      }
+    }
+
+    .MuiInputAdornment-root {
+      z-index: 3;
+    }
+
+    [class*="Mui-focused"] {
+      .MuiOutlinedInput-notchedOutline {
+        border: 1px solid var(--grey) !important;
+        outline: none;
+      }
+    }
+
+  }
+
+  .MuiOutlinedInput-input::placeholder {
+    color: var(--black);
+  }
+
+  .MuiOutlinedInput-root:focus-visible {
+    outline-offset: unset;
+    outline: none;
+  }
+}
+
+.MuiPickersPopper-root {
+  .MuiPickersDay-root {
+    background: transparent !important;
+  }
+}

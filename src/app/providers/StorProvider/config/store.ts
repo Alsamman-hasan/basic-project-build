@@ -5,16 +5,16 @@ import {
   Reducer,
   ReducersMapObject,
   ThunkDispatch,
-} from "@reduxjs/toolkit";
-import { $api } from "@/shared/api/api";
+} from '@reduxjs/toolkit';
+import { StateSchema, ThunkExtraArg, TStore } from './StateSchema';
+import { createReducerManager } from './reduserManager';
+import { $api } from '@/shared/api/api';
 
-import { createReducerManager } from "./reduserManager";
-import { StateSchema, ThunkExtraArg, TStore } from "./StateSchema";
-import { rtkApi } from "@/shared/api/rtkApi";
+import { rtkApi } from '@/shared/api/rtkApi';
 
 export function createReduxStore(
   initialState?: StateSchema,
-  asyncReducers?: ReducersMapObject<StateSchema>
+  asyncReducers?: ReducersMapObject<StateSchema>,
 ) {
   const rootReducer: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
@@ -27,16 +27,16 @@ export function createReduxStore(
     api: $api,
   };
   const store = configureStore({
-    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: __IS_DEV__,
-    preloadedState: initialState,
-    middleware: (getDefaultMiddleware) =>
+    middleware: getDefaultMiddleware =>
       getDefaultMiddleware({
+        serializableCheck: false,
         thunk: {
           extraArgument: extraArg,
         },
-        serializableCheck: false,
       }).concat(rtkApi.middleware),
+    preloadedState: initialState,
+    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
   }) as TStore;
 
   store.reducerManager = reducerManager;

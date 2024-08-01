@@ -1,0 +1,21 @@
+.Tags {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.3125rem 0.625rem;
+  border-radius: 20px;
+}
+
+.promotion, .success {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.new {
+  color: var(--white);
+  background: var(--red);
+}
+
+.Bestseller {
+  color: var(--black);
+  background: var(--Yellow);
+}

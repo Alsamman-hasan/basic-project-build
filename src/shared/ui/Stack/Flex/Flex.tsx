@@ -60,7 +60,7 @@ export const Flex = memo((props: FlexProps) => {
   };
   return (
     <div
-      style={{ ...style, gap: `${gap}rem` }}
+      style={{ ...style, gap: `${Number(gap) * 10}px` }} // значение gap  вычитывается из файла rest.scss свойство  font-size: 0.85vw; // ( 13.6 / 16) * 100, один rem  = 13,6px
       className={classNames(cls.Flex, mods, classess)}
       {...otherProps}
     >

@@ -1,0 +1,144 @@
+.wrapper {
+	width: 100%;
+	display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.CustomSelect {
+	font: var(--P3);
+	text-align: left;
+	border: 1px solid #ccc;
+	position: relative;
+	border-radius: 6px;
+	cursor: pointer;
+	width: 100%;
+}
+
+.isDisabled {
+	opacity: 0.5;
+}
+.dropdownInput {
+	width: 100%;
+	height: 2.75rem;
+	min-width: 90px;
+	padding: 0.625rem 0.75rem 0.625rem 1.25rem;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	gap: 7px;
+	background: var(--white);
+	border-radius: 6px;
+}
+
+
+.placeholder {
+  color: var(--dark-grey);
+}
+
+.dropdownTool {
+  &>svg {
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }  
+} 
+
+.List {
+	&::-webkit-scrollbar {
+		width: 3px !important;
+	}
+}
+.dropdownTool {
+  &>svg.translate {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+	} 
+} 
+
+.dropdownMenu {
+	width: 100%;
+	padding: 5px;
+	position: absolute;
+	-webkit-transform: translateY(6px);
+	-ms-transform: translateY(6px);
+	transform: translateY(6px);
+	border: 1px solid #dbdbdb;
+	border-radius: 6px;
+	background-color: #fff;
+	z-index: 99;
+	max-height: 312px;
+	min-height: 50px;
+
+}
+
+.dropdownMenu::-webkit-scrollbar {
+  width: 5px;
+}
+
+.dropdownMenu::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dropdownMenu::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.dropdownMenu::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.dropdownMenu.left {
+  left: 0;
+}
+
+.dropdownMenu.right {
+  right: 0;
+}
+
+.dropdownItem {
+	height: 90%;
+	width: 100%;
+	padding: 7px 10px;
+	cursor: pointer;
+	border-bottom: 1px solid var(--light-grey);
+	-webkit-transition: background-color 0.1s ease;
+	transition: background-color 0.1s ease;
+}
+
+.dropdownItem:hover {
+	background-color: var(--main-color);
+	color: var(--white);
+}
+
+.selected {
+	background-color: var(--main-color);
+	color:var(--white);
+}
+
+.searchBox {
+  padding: 5px;
+}
+
+.error {
+  color: var(--red);
+  display: none;
+}
+
+.errorMessage {
+  display: block;
+	margin: 5px 0 0 5px;
+}
+
+.errors {
+  border: 1px solid var(--red) !important;
+}

@@ -1,0 +1,80 @@
+.RadioButton {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 3fr;
+  margin-right: 4px;
+  position: relative;
+  width: 100%;
+  min-height: 3rem;
+}
+
+.radioLabel {
+  color: #303030;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+}
+
+.radioInput {
+  display: none;
+}
+
+.radioInput:checked + span {
+  border: 1px solid var(--grey);
+}
+
+.radioInput:checked + span::after {
+  opacity: 1;
+}
+
+.customRadio {
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--grey);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.customRadio::after {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--main-color);
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-52%, -51%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.error {
+  position: absolute;
+  left: 0.5rem;
+  top: 1rem;
+  color: var(--red);
+  display: none;
+}
+
+.errorMessage {
+  display: block;
+}
+
+.info {
+  background: rgba(243, 242, 242, 0.772);
+  border-radius: 5px;
+  padding: 4px;
+  width: 50%;
+  color: var(--red);
+}
+
+@media screen and (max-width: 426px) {
+  .info {
+    font-size: 10px;
+    width: 100%;
+  }
+}

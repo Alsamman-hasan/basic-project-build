@@ -5,11 +5,11 @@ import {
   Reducer,
   ReducersMapObject,
   Store,
-} from "@reduxjs/toolkit";
-import { AxiosInstance } from "axios";
-import { CounterSchema } from "@/entities/Counter";
-import { createReducerManager } from "./reduserManager";
-import { rtkApi } from "@/shared/api/rtkApi";
+} from '@reduxjs/toolkit';
+import { AxiosInstance } from 'axios';
+import { createReducerManager } from './reduserManager';
+import { CounterSchema } from '@/entities/Counter';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 export interface StateSchema {
   counter?: CounterSchema;
