@@ -1,14 +1,14 @@
-.P1 {
+.Pf {
   font: var(--P1);
   font-weight: 400;
 }
 
-.P2 {
+.Ps {
   font: var(--P2);
   font-weight: 400;
 }
 
-.P3 {
+.Pth {
   font: var(--P3);
   font-weight: 400;
 }
@@ -18,18 +18,19 @@
   font-weight: 400;
 }
 
-@media screen and (max-width: 425px) {
-  .P1 {
+@media screen and (width <= 425px) {
+
+  .Pf {
     font: var(--P1);
     font-weight: 400;
   }
 
-  .P2 {
+  .Ps {
     font: var(--P3) !important;
     font-weight: 400;
   }
 
-  .P3 {
+  .Pth {
     font: var(--P3);
     font-weight: 400;
   }

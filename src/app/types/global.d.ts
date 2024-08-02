@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare module '*.scss' {
   interface IClassNames {
     [className: string]: string;
@@ -5,7 +6,6 @@ declare module '*.scss' {
   const classNames: IClassNames;
   export = classNames;
 }
-
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
@@ -44,6 +44,7 @@ type OptionalRecord<K extends keyof any, T> = {
   [P in K]?: T;
 };
 
+type ValueOf<T> = T[keyof T];
 declare interface Iresponse<R, E> {
   result?: R;
   error?: E;

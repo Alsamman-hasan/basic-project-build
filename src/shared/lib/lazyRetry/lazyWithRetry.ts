@@ -1,20 +1,21 @@
-import { lazy } from "react";
+/* eslint-disable @typescript-eslint/ban-types */
+import { lazy } from 'react';
 
 export const lazyRetry = (componentImport: Function) =>
   lazy(async () => {
     const pageHasAlreadyBeenForceRefreshed = JSON.parse(
-      window.localStorage.getItem("page-has-been-force-refreshed") || "false"
+      window.localStorage.getItem('page-has-been-force-refreshed') || 'false',
     );
 
     try {
       const component = await componentImport();
 
-      window.localStorage.setItem("page-has-been-force-refreshed", "false");
+      window.localStorage.setItem('page-has-been-force-refreshed', 'false');
 
       return component;
     } catch (error) {
       if (!pageHasAlreadyBeenForceRefreshed) {
-        window.localStorage.setItem("page-has-been-force-refreshed", "true");
+        window.localStorage.setItem('page-has-been-force-refreshed', 'true');
         return window.location.reload();
       }
       throw error;

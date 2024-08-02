@@ -10,10 +10,10 @@ import {
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
 import cls from './CustomSelect.module.scss';
 import { CustomSelectProps } from './Select.async';
+import { classNames } from '../../../../lib/classNames/classNames';
 import { PTag } from '../../../Paragraph/P';
 import { HStack } from '../../../Stack';
 import { Input } from '../Input/Input';
-import { classNames } from '@/shared/lib/classNames/classNames';
 
 const Icon = memo(({ iconClass }: { iconClass: string }) => (
   <svg

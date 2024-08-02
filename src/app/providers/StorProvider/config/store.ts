@@ -1,11 +1,13 @@
 import {
-  AnyAction,
-  CombinedState,
   configureStore,
   Reducer,
   ReducersMapObject,
   ThunkDispatch,
+  UnknownAction,
 } from '@reduxjs/toolkit';
+import { persistReducer, persistStore } from 'redux-persist';
+import { PersistPartial } from 'redux-persist/es/persistReducer';
+import storage from 'redux-persist/lib/storage';
 import { StateSchema, ThunkExtraArg, TStore } from './StateSchema';
 import { createReducerManager } from './reduserManager';
 import { $api } from '@/shared/api/api';
@@ -26,8 +28,17 @@ export function createReduxStore(
   const extraArg: ThunkExtraArg = {
     api: $api,
   };
+  const persistedReducer = persistReducer(
+    {
+      key: 'root',
+      storage,
+      whitelist: [],
+    },
+    reducerManager.reduce as Reducer<StateSchema>,
+  ) as Reducer<StateSchema & PersistPartial, UnknownAction, StateSchema>;
+
   const store = configureStore({
-    devTools: __IS_DEV__,
+    devTools: true,
     middleware: getDefaultMiddleware =>
       getDefaultMiddleware({
         serializableCheck: false,
@@ -36,12 +47,15 @@ export function createReduxStore(
         },
       }).concat(rtkApi.middleware),
     preloadedState: initialState,
-    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
+    reducer: persistedReducer,
   }) as TStore;
-
+  const persist = persistStore(store);
   store.reducerManager = reducerManager;
-
-  return store;
+  return { persist, store };
 }
 
-export type AppDispatch = ThunkDispatch<StateSchema, ThunkExtraArg, AnyAction>;
+export type AppDispatch = ThunkDispatch<
+  StateSchema,
+  ThunkExtraArg,
+  UnknownAction
+>;

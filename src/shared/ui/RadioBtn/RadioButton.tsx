@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, ReactNode, memo } from 'react';
 import cls from './RadioButton.module.scss';
+import { classNames } from '../../lib/classNames/classNames';
 import { PTag } from '../Paragraph/P';
-import { classNames } from '@/shared/lib/classNames/classNames';
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,

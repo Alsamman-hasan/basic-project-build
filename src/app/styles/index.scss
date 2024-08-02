@@ -1,18 +1,20 @@
 @import "reset";
-// @import "variables/global.scss";
-// @import "themes/normal.scss";
+@import "variables/global.scss";
+@import "themes/normal.scss";
 
 
 .app {
-  background: #fdfafa;
+  background: var(--white);
   min-height: 100vh;
-  // font: var(--L);
-  // display: grid;
-  // grid-template-columns: 214px auto auto;
-  // grid-template-areas: 
-  // "headers headers headers"
-  // "main main main" 
-  // "footer footer footer"
-  // ;
+  font: var(--H3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
 }
 
+.snackbar {
+  #notistack-snackbar {
+    font: var(--Description);
+  }
+}

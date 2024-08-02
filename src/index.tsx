@@ -30,4 +30,4 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>,
 );
-reportWebVitals();
+reportWebVitals(console.log);

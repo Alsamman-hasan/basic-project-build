@@ -71,6 +71,7 @@ export const PhoneInput = memo((props: PhoneMaskProps) => {
       </div>
       {!!label && (
         <label htmlFor={`${name}-input`}>
+          <p className={cls.Label}>{`${label} ${required ? '*' : ''}`}</p>
           <PTag tage='P3' className={cls.Label}>
             {`${label} ${required ? '*' : ''}`}
           </PTag>

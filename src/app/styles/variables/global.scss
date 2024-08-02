@@ -1,0 +1,95 @@
+
+@font-face {
+  font-family: "Helvetica";
+  src: local('Helvetica'), 
+    url("shared/assets/fonts/helvetica_bold.otf") format('otf'),
+    url("shared/assets/fonts/helvetica_boldoblique.otf") format('otf'),
+    url("shared/assets/fonts/helvetica_cyr_boldoblique.ttf") format('ttf'),
+    url("shared/assets/fonts/helvetica_cyr_oblique.ttf") format('ttf'),
+    url("shared/assets/fonts/helvetica_light.otf") format('otf'),
+    url("shared/assets/fonts/helvetica_lightoblique.otf") format('otf'),
+    url("shared/assets/fonts/helvetica_oblique.otf") format('otf'),
+    url("shared/assets/fonts/helvetica_regular.otf") format('otf'),
+}
+ 
+
+:root {
+  --font-family-main: "Helvetica";
+
+  --font-size-h1: 2rem;
+  --font-line-h1: 100%;
+  --H1: var(--font-size-h1)/ var(--font-line-h1) var(--font-family-main);
+
+  --font-size-h2: 1.5rem;
+  --font-line-h2: 100%;
+  --H2: var(--font-size-h2)/ var(--font-line-h2) var(--font-family-main);
+
+  --font-size-h3: 1.25rem;
+  --font-line-h3: 120%;
+  --H3: var(--font-size-h3)/ var(--font-line-h3) var(--font-family-main);
+
+  --font-size-h4: 1rem; 
+  --font-line-h4: 120%;
+  --H4: var(--font-size-h4)/ var(--font-line-h4) var(--font-family-main);
+
+  --font-size-p1: 1.25rem;
+  --font-line-p1: 120%;
+  --P1: var(--font-size-p1)/ var(--font-line-p1) var(--font-family-main);
+
+  --font-size-p2: 1rem; 
+  --font-line-p2: 120%;
+  --P2: var(--font-size-p2)/ var(--font-line-p2) var(--font-family-main);
+  
+  --font-size-p3: 0.875rem; 
+  --font-line-p3: 120%;
+  --P3: var(--font-size-p3)/ var(--font-line-p3) var(--font-family-main);
+
+  --font-size-Banner: 3rem;
+  --font-line-Banner: 100%;
+  --Banner: var(--font-size-Banner)/ var(--font-line-Banner) var(--font-family-main);
+
+  --font-size-numeric1: 2.5rem; 
+  --font-line-numeric1: 100%;
+  --Numeric1: var(--font-size-numeric1)/ var(--font-line-numeric1) var(--font-family-main);
+
+  --font-size-numeric2: 1.75rem; 
+  --font-line-numeric2: 100%;
+  --Numeric2: var(--font-size-numeric2)/ var(--font-line-numeric2) var(--font-family-main);
+
+  --font-size-numeric3: 1.25rem; 
+  --font-line-numeric3: 100%;
+  --Numeric3: var(--font-size-numeric3)/ var(--font-line-numeric3) var(--font-family-main);
+
+  --font-size-numeric4: 1rem; 
+  --font-line-numeric4: 100%;
+  --Numeric4: var(--font-size-numeric4)/ var(--font-line-numeric4) var(--font-family-main);
+
+  --font-size-description: 0.75rem; 
+  --font-line-description: 120%;
+  --Description: var(--font-size-description)/ var(--font-line-description) var(--font-family-main);
+
+  --font-size-description2: 0.625rem; 
+  --font-line-description2: 120%;
+  --Description2: var(--font-size-description2)/ var(--font-line-description2) var(--font-family-main);
+
+  --header-height: 8rem;
+  --header-height768: 6rem;
+
+
+  --black: #252528;
+  --main-color: #00845B;
+  --white: #FFFFFF;
+  --gradient: radial-gradient(100% 100% at 50.36% 0%, #38B48D 0%, #007752 100%);
+  --dark-grey: #666666;
+  --blue: #4481DB;
+  --grey: #B3B3B3;
+  --light-grey: #D7D7D7;
+  --add-white: #F9F9FB;
+  --Yellow: #F2C94C;
+  --red: #D51E4A;
+  --green: #146626;
+    
+  --skeleton-color: #E5E5E5;
+  --skeleton-shadow: rgba(0 0 0 / 20%);
+
+}

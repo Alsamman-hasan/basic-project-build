@@ -1,6 +1,5 @@
 import { CSSProperties, TextareaHTMLAttributes, memo, useState } from 'react';
 import cls from './Textarea.module.scss';
-
 import { classNames } from '../../../../lib/classNames/classNames';
 import { PTag } from '../../../Paragraph/P';
 

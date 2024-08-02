@@ -11,9 +11,11 @@ export function buildCssLoader(isDev: boolean) {
         options: {
           modules: {
             auto: (resPath: string) => Boolean(resPath.includes('.module.')),
+            exportLocalsConvention: 'as-is',
             localIdentName: isDev
               ? '[path][name]__[local]--[hash:base64:5]'
               : '[hash:base64:8]',
+            namedExport: false,
           },
         },
       },

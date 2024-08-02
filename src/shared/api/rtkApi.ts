@@ -7,7 +7,6 @@ import {
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query/react';
 import { enqueueSnackbar } from 'notistack';
-import { StateSchema } from '@/app/providers/StorProvider';
 // import { authDataActions } from '@/entities/authData';
 
 const baseUrl = __IS_DEV__ ? process.env.API_URL_VEV : process.env.API_URL;
@@ -38,10 +37,9 @@ const baseQueryWithReauth: BaseQueryFn<
       api,
       extraOptions,
     );
-    if (refreshResult.data) {
+    if (refreshResult.data)
       // dispatch(authDataActions.setAccessToken(refreshResult.data as string));
       result = await baseQuery(args, api, extraOptions);
-    }
   }
   if (result.error) {
     enqueueSnackbar('Что-то пошло не так', {

@@ -1,6 +1,6 @@
-import { CSSProperties, memo, ReactNode } from "react";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import cls from "./Wrapper.module.scss";
+import { CSSProperties, memo, ReactNode } from 'react';
+import cls from './Wrapper.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface WrapperProps {
   className?: string;

@@ -80,7 +80,7 @@ export function buildPlugins(options: IBuildOptions): WebpackPluginInstance[] {
     plugins.push(new ReactRefreshWebpackPlugin());
     plugins.push(
       new BundleAnalyzerPlugin({
-        openAnalyzer: false,
+        openAnalyzer: true,
       }),
     );
   }

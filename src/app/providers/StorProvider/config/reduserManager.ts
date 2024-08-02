@@ -1,5 +1,5 @@
 import {
-  AnyAction,
+  UnknownAction,
   combineReducers,
   Reducer,
   ReducersMapObject,
@@ -32,7 +32,7 @@ export function createReducerManager(
     },
     getMountedReducers: () => mountedReducers,
     getReducerMap: () => reducers,
-    reduce: (state: StateSchema, action: AnyAction) => {
+    reduce: (state: StateSchema, action: UnknownAction) => {
       if (keysToRemove.length > 0) {
         state = { ...state };
         keysToRemove.forEach(key => {
@@ -40,7 +40,7 @@ export function createReducerManager(
         });
         keysToRemove = [];
       }
-      return combinedReducer(state, action);
+      return combinedReducer(state as never, action);
     },
     remove: (key: StateSchemaKey) => {
       if (!key || !reducers[key]) return;
