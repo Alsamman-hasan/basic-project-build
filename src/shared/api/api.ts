@@ -8,10 +8,8 @@ interface FailedRequests {
   config: AxiosRequestConfig;
   error: AxiosError;
 }
-
-const baseURL = __IS_DEV__ ? process.env.API_URL_VEV : process.env.API_URL;
 const api = axios.create({
-  baseURL,
+  baseURL: __API__,
   headers: {
     Accept: 'application/json, text/plain, */*',
     'Content-Type': 'application/json',
@@ -68,7 +66,7 @@ api.interceptors.response.use(
     isTokenRefreshing = true;
 
     try {
-      const response = await axios.get(`${baseURL}users/auth/refresh`, {
+      const response = await axios.get(`${__API__}users/auth/refresh`, {
         withCredentials: true,
       });
       const { accessToken = null } = response.data ?? {};

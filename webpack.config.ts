@@ -3,7 +3,15 @@ import dotenv from 'dotenv';
 import getPublicUrlOrPath from 'react-dev-utils/getPublicUrlOrPath';
 import webpack from 'webpack';
 import { buildWebpackConfig } from './config/build/buildWebpack.config';
-import { BuildEnv, BuildPaths } from './config/build/types/config';
+import { BuildEnv, BuildMode, BuildPaths } from './config/build/types/config';
+
+function getApiUrl(mode: BuildMode, apiUrl?: string) {
+  if (apiUrl) return apiUrl;
+
+  if (mode === 'production' && process.env.API_URL) return process.env.API_URL;
+
+  return process.env.API_URL_DEV || 'http://localhost:9000/web/';
+}
 
 export default (env: BuildEnv) => {
   const resolveApp = (relativePath: string) =>
@@ -27,7 +35,7 @@ export default (env: BuildEnv) => {
   dotenv.config().parsed || {};
   const mode = env.mode || 'development';
   const isDev = mode === 'development';
-  const { apiUrl } = env;
+  const apiUrl = getApiUrl(mode, env?.apiUrl);
   const PORT = Number(process.env.APP_PORT);
 
   const publicUrlOrPath = getPublicUrlOrPath(

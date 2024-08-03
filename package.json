@@ -4,10 +4,6 @@
   "description": "",
   "main": "index.js",
   "sideEffects": true,
-  "engines": {
-    "npm": "8.19.2",
-    "node": "18.12.1"
-  },
   "scripts": {
     "start": "serve -s build",
     "dev": "webpack serve --env mode=development ",

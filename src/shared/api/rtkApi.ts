@@ -8,10 +8,8 @@ import {
 } from '@reduxjs/toolkit/query/react';
 import { enqueueSnackbar } from 'notistack';
 // import { authDataActions } from '@/entities/authData';
-
-const baseUrl = __IS_DEV__ ? process.env.API_URL_VEV : process.env.API_URL;
 const baseQuery = fetchBaseQuery({
-  baseUrl,
+  baseUrl: __API__,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     // const {
